@@ -6,7 +6,8 @@ console.log(cancigaz);
 
 let count = 0;
 let can=250;
-
+let vaxt = 1000
+var birinci;
 
 
 function start() {
@@ -20,8 +21,8 @@ function start() {
       can-=5;
         cancigaz.style.height=can +'px'
 
-        if (can==0) {
-            score.innerHTML=`Təəssüf, oyun bitdi..`
+        if (can===0) {
+            score.innerHTML=`Teessuf oyun bitdi`;
         }
 }
 
@@ -29,36 +30,27 @@ function start() {
 mole.forEach(x => {
     x.addEventListener('click', function () {
         score.innerHTML=++count;
+        x.classList.remove('goster')
         can+=5;
-        cancigaz.style.height=can+"px";
+        cancigaz.style.height=can+'px';
         if (count === 5) {
             score.innerHTML= `Tebrikler 1 Level bitdi <br>
             2-ci Levele keçdiniz..`;
-            count=0;
-            secondLevel();
+            vaxt-=500
+        }else if(count===10){
+            score.innerHTML= 'Tebrikler oyunu bitirdiniz';
+            clearInterval(birinci);
         }
     })
 });
 
-function secondLevel() {
-    
-setInterval(() => {
-
-    if (count === 3) {
-        score.innerHTML= 'Tebrikler oyunu bitirdiniz';
-        clearInterval(secondLevel)
-    }
-    start();
-
-}, 500);
-
-}
 
 btn.addEventListener('click', function () {
+    this.style.display = 'none'
 
-    setInterval(() => {
+  birinci = setInterval(() => {
         start();
-    }, 1000);
+    }, vaxt);
 
 
 
