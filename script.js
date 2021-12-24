@@ -23,6 +23,7 @@ function start() {
 
         if (can===0) {
             score.innerHTML=`Teessuf oyun bitdi`;
+            clearInterval(birinci)
         }
 }
 
